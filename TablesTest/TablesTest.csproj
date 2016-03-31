@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="BuildingsModel.cs" />
     <Compile Include="ExtractHouseholds.cs" />
-    <Compile Include="ExtractBuildings.cs" />
     <Compile Include="HouseholdsModel.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

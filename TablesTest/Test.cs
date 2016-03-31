@@ -14,17 +14,19 @@ namespace TablesTest
 
         static void Main(string[] args)
         {
-            string filename;
+            
 
             string[] temp;
 
             temp = Directory.GetFiles(folder);
-            Household[] A;
+            Building[] A = new Building[temp.Length];
             ExtractHouseholds B;
+            Excel.Application app = new Excel.Application();
+            B = new ExtractHouseholds(app);
             for (int i = 0; i < temp.Length; ++i)
             {
-                B = new ExtractHouseholds(temp[i]);
-                A = B.Extract();
+                B.SetFile(temp[i]);
+                A[i] = new Building (B.Extract());
 
             }
         }

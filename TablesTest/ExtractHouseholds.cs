@@ -11,9 +11,14 @@ namespace TablesTest
 {
     class ExtractHouseholds
     {
-        static public string file { set; get; }
 
-        public ExtractHouseholds(string a)
+        static public Excel.Application app { set; get; }
+        static public string file;
+        public ExtractHouseholds(Excel.Application a) 
+        {
+            app = a;
+        }
+        public void SetFile (string a)
         {
             file = a;
         }
@@ -21,13 +26,17 @@ namespace TablesTest
         {
             Excel.Worksheet ws;
             int i = 1;
+            int a;
             ws = (Excel.Worksheet)wb.Sheets[i];
-
-            while (ws.Cells.Find("С  П  Р  А  В  К  А", Type.Missing,
-Excel.XlFindLookIn.xlValues, Excel.XlLookAt.xlWhole,
-Excel.XlSearchOrder.xlByRows, Excel.XlSearchDirection.xlNext, false,
-Type.Missing, Type.Missing) == null)
+            Excel.Range range;
+            bool b = true;
+            while (b)
             {
+                for (int j = 1; j < 50; ++j)
+                {
+                    range = ws.get_Range("A" + j);
+                    if (Int32.TryParse(range.Text.ToString(), out a)) return i;
+                }
 
                 i++;
                 ws = (Excel.Worksheet)wb.Sheets[i];
@@ -37,7 +46,7 @@ Type.Missing, Type.Missing) == null)
         }
         public Household[] Extract()
         {
-            Excel.Application app = null;
+            
             Excel.Workbook wb = null;
             Excel.Worksheet ws;
             Household[] A = null;
@@ -46,7 +55,7 @@ Type.Missing, Type.Missing) == null)
 
             try
             {
-                app = new Excel.Application();
+                
                 wb = wb = app.Workbooks.Open(file);
                 ws = (Excel.Worksheet)wb.Sheets[Wsn(wb)];
                 n = 0;
@@ -85,11 +94,7 @@ Type.Missing, Type.Missing) == null)
                 {
                     wb.Close(false);
                 }
-                if (app != null)
-                {
-                    app.Quit();
-
-                }
+                
 
             }
 
