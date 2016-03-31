@@ -10,7 +10,7 @@ namespace TablesTest
 {
     class Test
     {
-        static public string folder = @"C:\Users\Lubo\Desktop\Tables";
+        static public string folder = @"C:\Users\Lubo\Desktop\Centroida\Pft";
 
         static void Main(string[] args)
         {

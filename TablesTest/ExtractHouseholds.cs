@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
+
 
 namespace TablesTest
 {
@@ -35,40 +37,61 @@ Type.Missing, Type.Missing) == null)
         }
         public Household[] Extract()
         {
-            Excel.Application app;
-            Excel.Workbook wb;
+            Excel.Application app = null;
+            Excel.Workbook wb = null;
             Excel.Worksheet ws;
-            Household[] A;
+            Household[] A = null;
             int r, n, i = 1;
-
-            app = new Excel.Application();
-            wb = app.Workbooks.Open(file);
-            ws = (Excel.Worksheet)wb.Sheets[Wsn(wb)];
-            n = 0;
-            Excel.Range range = ws.get_Range("A" + i);
-
-
-
-            while (!Int32.TryParse(range.Text.ToString(), out r))
-            {
-                ++i;
-                range = ws.get_Range("A" + i);
-            }
-            n = i;
-            while (Int32.TryParse(range.Text.ToString(), out r))
-            {
-                ++i;
-                range = ws.get_Range("A" + i);
-
-            }
-            A = new Household[i-n];
             
 
-            for (int j = n; j<i; ++j)
+            try
             {
-                A[j - n] = new Household(ws, j);
-            }
+                app = new Excel.Application();
+                wb = wb = app.Workbooks.Open(file);
+                ws = (Excel.Worksheet)wb.Sheets[Wsn(wb)];
+                n = 0;
+                Excel.Range range = ws.get_Range("A" + i);
 
+
+
+                while (!Int32.TryParse(range.Text.ToString(), out r))
+                {
+                    ++i;
+                    range = ws.get_Range("A" + i);
+                }
+                n = i;
+                while (Int32.TryParse(range.Text.ToString(), out r))
+                {
+                    ++i;
+                    range = ws.get_Range("A" + i);
+
+                }
+                A = new Household[i - n];
+
+
+                for (int j = n; j < i; ++j)
+                {
+                    A[j - n] = new Household(ws, j);
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e);
+
+            }
+            finally
+            {
+                if (wb != null )
+                {
+                    wb.Close(false);
+                }
+                if (app != null)
+                {
+                    app.Quit();
+
+                }
+
+            }
 
 
             return A;
