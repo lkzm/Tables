@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,25 +10,29 @@ namespace TablesTest
 {
     class Test
     {
+        static public string folder = @"C:\Users\Lubo\Desktop\Tables";
+
         static void Main(string[] args)
         {
             string filename;
 
-            Building[] C;
-            filename = @"C:\Users\Lubo\Desktop\Centroida\TablesTest\buildingstable.xlsx";
-            ExtractBuildings E = new ExtractBuildings(filename);
-            C = E.Extract();
+            string[] temp;
 
-            Household[] F;
-            filename = @"C:\Users\Lubo\Desktop\Tables\бул. Св.Св. Кирил и Методйй № 24, вх. Г.xls";
-            ExtractHouseholds D = new ExtractHouseholds(filename);
-            F = D.Extract();
+            temp = Directory.GetFiles(folder);
+            Household[] A;
+            ExtractHouseholds B;
+            for (int i = 0; i < temp.Length; ++i)
+            {
+                B = new ExtractHouseholds(temp[i]);
+                A = B.Extract();
 
-            
-
-            
-
-
+            }
         }
+
+
+
+
+
+
     }
 }
