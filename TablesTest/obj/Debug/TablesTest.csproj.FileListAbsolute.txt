@@ -5,3 +5,10 @@ C:\Users\Lubo\Desktop\Centroida\TablesTest\TablesTest\bin\Debug\TablesTest.exe
 C:\Users\Lubo\Desktop\Centroida\TablesTest\TablesTest\bin\Debug\TablesTest.pdb
 C:\Users\Lubo\Desktop\Centroida\TablesTest\TablesTest\obj\Debug\TablesTest.exe
 C:\Users\Lubo\Desktop\Centroida\TablesTest\TablesTest\obj\Debug\TablesTest.pdb
+C:\Users\Lubo\Desktop\Centroida\Tables\TablesTest\bin\Debug\TablesTest.exe.config
+C:\Users\Lubo\Desktop\Centroida\Tables\TablesTest\obj\Debug\TablesTest.csproj.ResolveComReference.cache
+C:\Users\Lubo\Desktop\Centroida\Tables\TablesTest\obj\Debug\TablesTest.exe
+C:\Users\Lubo\Desktop\Centroida\Tables\TablesTest\obj\Debug\TablesTest.pdb
+C:\Users\Lubo\Desktop\Centroida\Tables\TablesTest\bin\Debug\TablesTest.exe
+C:\Users\Lubo\Desktop\Centroida\Tables\TablesTest\bin\Debug\TablesTest.pdb
+C:\Users\Lubo\Desktop\Centroida\Tables\TablesTest\obj\Debug\TablesTest.csprojResolveAssemblyReference.cache
